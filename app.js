@@ -41,15 +41,25 @@ fruit.save();
 const personSchema = new mongoose.Schema({
   name: String,
   age: Number,
+  faveFruit: fruitSchema
 });
+
+const pear = new Fruit({
+    name: "Pear",
+    rating: 9,
+    review: "Nice fruit."
+})
+
+pear.save();
  
 //create a MODEL
 const Person = mongoose.model("Person", personSchema);
  
 //create a DOCUMENT
 const person = new Person({
-  name: "John",
-  age: 37,
+  name: "Anna",
+  age: 19,
+  faveFruit: pear
 });
  
 //Save it
@@ -73,10 +83,10 @@ const banana = new Fruit({
   review: "Weird texture",
 });
  
-Fruit.insertMany([kiwi, orange, banana])
-  .then(function () {
-    console.log("Data inserted"); // Success
-  })
-  .catch(function (error) {
-    console.log(error); // Failure
-  });
+// Fruit.insertMany([kiwi, orange, banana])
+//   .then(function () {
+//     console.log("Data inserted"); // Success
+//   })
+//   .catch(function (error) {
+//     console.log(error); // Failure
+//   });
