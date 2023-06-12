@@ -11,8 +11,15 @@ async function main() {
 //create a SCHEMA that sets out the fields each document will have and their datatypes
  
 const fruitSchema = new mongoose.Schema({
-  name: String,
-  rating: Number,
+  name: {
+    type: String,
+    required: [true, "No name specified."]
+  },
+  rating: { 
+    type: Number,
+    min: 1,
+    max: 10,
+  },
   review: String,
 });
  
